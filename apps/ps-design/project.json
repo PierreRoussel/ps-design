@@ -1,0 +1,83 @@
+{
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "apps/ps-design/src",
+  "projectType": "application",
+  "targets": {
+    "build": {
+      "executor": "@nrwl/web:webpack",
+      "outputs": ["{options.outputPath}"],
+      "defaultConfiguration": "production",
+      "options": {
+        "compiler": "babel",
+        "outputPath": "dist/apps/ps-design",
+        "index": "apps/ps-design/src/index.html",
+        "baseHref": "/",
+        "main": "apps/ps-design/src/main.tsx",
+        "polyfills": "apps/ps-design/src/polyfills.ts",
+        "tsConfig": "apps/ps-design/tsconfig.app.json",
+        "assets": [
+          "apps/ps-design/src/favicon.ico",
+          "apps/ps-design/src/assets"
+        ],
+        "styles": ["apps/ps-design/src/styles.scss"],
+        "scripts": [],
+        "webpackConfig": "@nrwl/react/plugins/webpack"
+      },
+      "configurations": {
+        "development": {
+          "extractLicenses": false,
+          "optimization": false,
+          "sourceMap": true,
+          "vendorChunk": true
+        },
+        "production": {
+          "fileReplacements": [
+            {
+              "replace": "apps/ps-design/src/environments/environment.ts",
+              "with": "apps/ps-design/src/environments/environment.prod.ts"
+            }
+          ],
+          "optimization": true,
+          "outputHashing": "all",
+          "sourceMap": false,
+          "namedChunks": false,
+          "extractLicenses": true,
+          "vendorChunk": false
+        }
+      }
+    },
+    "serve": {
+      "executor": "@nrwl/web:dev-server",
+      "defaultConfiguration": "development",
+      "options": {
+        "buildTarget": "ps-design:build",
+        "hmr": true
+      },
+      "configurations": {
+        "development": {
+          "buildTarget": "ps-design:build:development"
+        },
+        "production": {
+          "buildTarget": "ps-design:build:production",
+          "hmr": false
+        }
+      }
+    },
+    "lint": {
+      "executor": "@nrwl/linter:eslint",
+      "outputs": ["{options.outputFile}"],
+      "options": {
+        "lintFilePatterns": ["apps/ps-design/**/*.{ts,tsx,js,jsx}"]
+      }
+    },
+    "test": {
+      "executor": "@nrwl/jest:jest",
+      "outputs": ["coverage/apps/ps-design"],
+      "options": {
+        "jestConfig": "apps/ps-design/jest.config.ts",
+        "passWithNoTests": true
+      }
+    }
+  },
+  "tags": []
+}
