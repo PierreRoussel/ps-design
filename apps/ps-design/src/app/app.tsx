@@ -1,13 +1,15 @@
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
-import styles from './app.module.scss';
-import NxWelcome from './nx-welcome';
+import { BrowserRouter, Router } from 'react-router-dom';
+import Homepage from '../modules/homepage/homepage';
+import MainNavigation from '../modules/main-navigation/main';
+import './app.module.scss';
 
 export function App() {
   return (
-    <>
-      <NxWelcome title="ps-design" />
-      <div />
-    </>
+    <BrowserRouter>
+      <MainNavigation/>
+      <Homepage/>
+    </BrowserRouter>
   );
 }
 

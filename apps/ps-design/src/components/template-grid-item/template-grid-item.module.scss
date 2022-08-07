@@ -1,0 +1,18 @@
+.container {
+    width: 90%;
+    min-height: 250px;
+    max-height: 320px;
+    margin: 5px;
+    background-repeat: no-repeat;
+    background-size: cover;
+    transition: all 0.2s;
+    &:hover {
+        cursor: pointer;
+        outline: 1px solid #444;
+        outline-offset: 5px;
+        // box-shadow: 2px 2px 8px 2px rgb(187, 180, 180);
+    }
+    p {
+        position: relative;
+    }
+}
