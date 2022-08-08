@@ -8,7 +8,6 @@ export interface TemplateGridItemProps {
 
 export function TemplateGridItem(props: TemplateGridItemProps) {
   const height = {
-    height: 50 + Math.random() * 500,
     backgroundImage: `url(../assets/${props.template.images[0].url}.png)`,
   };
   if (props.template)
